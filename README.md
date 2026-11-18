@@ -46,26 +46,79 @@ The browser never receives the `incomingLike` flag. Match eligibility is evaluat
 ## Suggested deployment
 Deploy the Node API and React static build separately (for example, Render + Vercel), configure the frontend API base URL for production, and use a durable database instead of the local JSON file. Do not deploy the demo JSON file with real user data.
 
-## Part A — Product thinking
 
-The current Coy product is a double-blind way for people who already know each other to discover mutual interest. A user adds a crush by phone number or email; the other person receives an anonymous heads-up, and identities are revealed only when both add each other. Coy deliberately avoids public profiles, photos, swiping and in-app chat. The assignment's Discover experience is therefore best treated as a clearly separate discovery surface, not a replacement for Coy's private crush list.
+## Part A — Product Exploration and Product Thinking
 
-### Feature idea 1: Mutual-match icebreaker handoff
-**What:** After a mutual match, offer a small set of optional, editable conversation starters alongside the existing contact handoff. Examples could be light prompts based on shared interests, or a simple “say hello” template. Keep the actual conversation outside Coy, consistent with its no-chat positioning.
+### 1. Hands-on Product Walkthrough
 
-**Why it is required:** A match resolves the uncertainty but can still leave both people unsure how to start. A low-pressure prompt reduces that awkward first step without exposing unmatched likes, adding a chat inbox, or changing the double-blind rule. Prompts should be optional and shown only after a mutual match.
+Completed the Coy onboarding and product exploration flow.
 
-### Feature idea 2: Discovery privacy and safety controls
-**What:** Because Discover introduces browsable profiles and swiping, add a dedicated control panel for pausing discovery, hiding a profile, blocking/reporting a user, and controlling which profile fields are visible. Make age eligibility and reporting easy to find.
+**Phone verification**
+- Successfully registered using mobile OTP verification.
 
-**Why it is required:** Coy's original model is intentionally limited to people a user already knows, with no public profiles. A swipe-based surface changes the threat model: it can introduce unwanted attention, impersonation, harassment, and unwanted visibility. Clear controls give users agency and help preserve trust while keeping Discover separate from the anonymous crush-matching experience.
+**Adding the first crush**
+- Completed the first-crush setup.
+- Explored the available options for adding a crush.
 
-### Product observation and scope note
-The official Coy public product description says it is 18+ and centres on double-blind matching: a person is not told who added them unless they add that person too. It also describes limited anonymous notifications, opt-out controls, and no profile browsing or chat. This implementation follows the assignment's explicit Discover requirements while keeping incoming likes private and making the Home tab a placeholder.
+**Email verification**
+- Successfully verified the registered email address through OTP verification.
 
-**Research links:**
-[Coy — How it works](https://getcoy.com/)
-[Coy — How Coy works](https://getcoy.com/blog/how-coy-works)
-[Coy — Is Coy safe?](https://getcoy.com/blog/is-coy-safe)
+**Invite link**
+- Inspected the referral/invite link.
+- Opening the invite link redirects a new visitor to the registration experience.
+- This creates an onboarding entry point for new users.
 
-**Hands-on app walkthrough still required:** The assignment specifically asks the candidate to complete phone OTP login, add a crush, verify email, inspect the invite link, and view the extra-slots screen without purchasing. Those account-specific steps require the candidate's own phone/email and OTP. They have not been represented as completed in this submission; complete them in your own Coy account and add any observations that differ from the public product information above.
+**Extra slots and pricing**
+- Reached the "Get more slots" purchase screen.
+- The screen indicated that 3 of 3 slots were in use and that purchased extra slots are retained.
+- Observed the following launch-offer pricing:
+
+| Additional slots | Displayed price | Price per slot |
+|---|---:|---:|
+| 1 crush | ₹49 | ₹49 |
+| 3 crushes | ₹129 | ₹43 |
+| 5 crushes | ₹199 | ₹40 |
+
+- Payment methods displayed: UPI, cards and wallets via Cashfree.
+- Prices include GST.
+- Observed a referral alternative: invite 3 friends; when they join and add a crush, the inviter receives one free slot.
+- Referral progress displayed during exploration: 0 of 3 joined.
+- No purchase was made.
+
+### 2. Product Understanding
+
+Coy is designed around double-blind crush matching. A user can add someone they are interested in, but the other person is not told who added them unless they independently add that person too.
+
+The product focuses on private, mutual discovery rather than public profiles, browsing, swiping or in-app chat.
+
+The Discover experience in this assignment should therefore be considered a separate discovery surface rather than a replacement for Coy's original private matching experience.
+
+### 3. Feature Idea 1 — Mutual-match Icebreaker Handoff
+
+**What:**
+After a mutual match, offer a small set of optional, editable conversation starters. These could include prompts based on shared interests or a simple "say hello" template.
+
+**Why:**
+A match resolves uncertainty but can still leave both people unsure how to start a conversation. Optional prompts can reduce that awkward first step without introducing an in-app chat system or exposing unmatched likes.
+
+### 4. Feature Idea 2 — Discovery Privacy and Safety Controls
+
+**What:**
+Introduce controls for pausing discovery, hiding profiles, blocking or reporting users, and controlling profile visibility.
+
+**Why:**
+A swipe-based discovery experience introduces different privacy and safety considerations from Coy's original private matching model. Clear controls can help users manage unwanted attention, impersonation and unwanted visibility while maintaining trust.
+
+### 5. Additional Product Improvement — Clearer Slot and Referral Information
+
+**Observation:**
+The extra-slots screen provides multiple purchase bundles and a referral-based free-slot option.
+
+**Suggestion:**
+Explain the current slot allowance, the total capacity after each purchase, and the referral eligibility conditions more clearly. A simple progress indicator could also explain how many invited friends still need to join and add a crush.
+
+### 6. Research References
+
+- [Coy — How it works](https://getcoy.com/)
+- [Coy — How Coy works](https://getcoy.com/blog/how-coy-works)
+- [Coy — Is Coy safe?](https://getcoy.com/blog/is-coy-safe)
