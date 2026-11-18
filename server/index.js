@@ -1,0 +1,16 @@
+import express from 'express';
+import cors from 'cors';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { profiles } from './seed.js';
+import { getFeed, recordSwipe, getMutualMatches } from './domain.js';
+const app = express(); app.use(cors()); app.use(express.json());
+const here = path.dirname(fileURLToPath(import.meta.url)); const dbPath = path.join(here, '../data/db.json');
+const read = () => JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+const write = (db) => fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+app.get('/api/feed', (_req, res) => { const db = read(); res.json(getFeed(profiles, db.swipes)); });
+app.post('/api/swipe', (req, res) => { const db = read(); const result = recordSwipe({ profiles, db, ...(req.body || {}) }); if (result.status === 200) write(db); res.status(result.status).json(result.body); });
+app.get('/api/matches', (_req, res) => res.json(getMutualMatches(profiles, read())));
+app.get('/api/health', (_req, res) => res.json({ ok: true }));
+const PORT = process.env.PORT || 4000; app.listen(PORT, () => console.log(`Coy API running on http://localhost:${PORT}`));
